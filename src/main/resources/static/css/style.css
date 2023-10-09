@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Fredericka+the+Great&family=Handlee&display=swap");
+
+body {
+  font-family: "Handlee", cursive !important;
+  background-color: #EEF6F9 !important;
+
+}
+main{
+    padding: 20px;
+}
+nav {
+  font-weight: bolder !important;
+  background-color: #1D282E !important;
+  text-align: center;
+  background-image: url("../img/fff.png");
+  background-size: cover;
+}
+
+.logo {
+  animation: girar 20s linear infinite;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
