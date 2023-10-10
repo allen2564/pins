@@ -16,7 +16,7 @@ nav {
 }
 
 .logo {
-  animation: girar 20s linear infinite;
+  animation: girar 200s alternate infinite;
 }
 
 @keyframes girar {
