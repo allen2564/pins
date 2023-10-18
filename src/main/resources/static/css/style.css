@@ -4,8 +4,9 @@ body {
   font-family: "Handlee", cursive !important;
   font-style: italic !important;
   background-color: #eef6f9 !important;
-  background-image: url("../img/2yqT.gif");
+  background-image: url("https://i.ibb.co/JWZPsZR/fondo.webp");
   background-size: cover;
+  background-position: 180%;
 
 }
 main {
