@@ -26,17 +26,17 @@ public class PinEntity implements Serializable {
     private Long idPin;
 
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
     @Column(name = "nombre_pin", unique = true)
     private String nombrePin;
 
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
     @Column(name = "fondo_pin")
     private String fondoPin;
 
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
     @Column(name = "img_pin")
     private String imgPin;
 
