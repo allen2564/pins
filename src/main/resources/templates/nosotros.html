@@ -1,62 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title> TusPinsTunja / Catalogo </title>
-  <link
-      rel="shortcut icon"
-      href="img\logo.png"
-      type="image/x-icon"
+  <head>
+    <title>TusPinsTunja / Catalogo</title>
+    <link rel="shortcut icon" href="img\logo.png" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="css\style.css" />
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-  crossorigin="anonymous"
-/>
-</head>
+    <link rel="stylesheet" href="css\style.css" />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-  <div class="petalos position-fixed z-2 w-100 d-flex h-75" >
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-  </div>
-  <header>
-    <nav th:replace="layout/plantilla.html :: navigation"></nav>
-    <div class=" d-flex p-0 container-fluid text-center text-capitalize align-items-center justify-content-center"  style="background-image: url(../img/fondu.jpg); background-size: cover; background-position-y: center;  width: 100%; height: 200px;" >
-    
-      <h1 class="text-white fw-bolder w-100 overflow-hidden h-100 display-2 pt-5 text-wrap  m-auto" style="text-decoration: underline solid #A0835C; text-shadow: 3px 5px 3px rgb(0, 0, 0); backdrop-filter: blur(2px); background-color: rgba(0, 0, 0, 0.353); ">[[${titulo}]]</h1>
+  <body>
+    <div class="petalos position-fixed z-2 w-100 d-flex h-75">
+      <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75" />
+      <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75" />
+      <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75" />
+      <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75" />
     </div>
-  </header>
-  <main>
-<div class="container-fluid" >
-  <div class="row justify-content-evenly align-items-center m-auto text-center border rounded-2 p-3" style="background-color: #1d282e;">
+    <header>
+      <nav th:replace="layout/plantilla.html :: navigation"></nav>
+      <div
+        class="d-flex p-0 container-fluid text-center text-capitalize align-items-center justify-content-center"
+        style="
+          background-image: url(../img/fondu.jpg);
+          background-size: cover;
+          background-position-y: center;
+          width: 100%;
+          height: 200px;
+        "
+      >
+        <h1
+          class="text-white fw-bolder w-100 overflow-hidden h-100 display-2 pt-5 text-wrap m-auto"
+          style="
+            text-decoration: underline solid #a0835c;
+            text-shadow: 3px 5px 3px rgb(0, 0, 0);
+            backdrop-filter: blur(2px);
+            background-color: rgba(0, 0, 0, 0.353);
+          "
+        >
+          [[${titulo}]]
+        </h1>
+      </div>
+    </header>
+    <main>
+      <div class="container-fluid">
+        <div
+          class="row justify-content-evenly align-items-center m-auto text-center border rounded-2 p-3"
+          style="background-color: #1d282e"
+        >
+          <!-- Carrusel de imágenes con Bootstrap -->
+          <div id="myCarousel" class="carousel slide w-100 h-100" data-bs-ride="carousel" style="height: 400px;">
+            <div class="carousel-inner w-100 h-100" >
+            
+              <div class="carousel-item active w-100 rounded-3 p-1" >
+                <img
+                  src="https://i.ibb.co/pdwZcSh/img3.webp"
+                  class="d-block w-50 m-auto object-fit-contain border border-1 w-auto rounded-3"
+                  alt="..."
+                />
+              </div>
 
-  
+              <div class="carousel-item w-100 rounded-3 p-1">
+                <img src="https://i.ibb.co/XJBVBbQ/img2.webp" class="d-block w-50 m-auto object-fit-contain border border-1 w-auto rounded-3" alt="..." />
+              </div>
 
+            
+              <div class="carousel-item w-100 rounded-3 p-1"  style="margin: 90px 0!important;">
+                <img src="https://i.ibb.co/GvQTbNJ/img1-1.webp" class="d-block w-50 m-auto object-fit-contain border border-1 w-auto rounded-3 img-uno" alt="..." />
+              </div>
+              
+            </div>
+          </div>
+          <!-- Contenido principal con Bootstrap -->
+          <div class="container main-content text-white">
+            <p>
+              Somos tu destino <span class="highlight">único</span> para pines
+              metálicos de alta calidad en la hermosa ciudad de Tunja, Colombia.
+              Nos dedicamos exclusivamente a la venta y distribución al por
+              detal de estos exquisitos accesorios.
+            </p>
+            <hr />
+            <p>
+              Entendemos que los detalles
+              <span class="highlight">marcan la diferencia</span>. Nuestra
+              colección de pines metálicos es una manifestación de la
+              <span class="highlight">individualidad y estilo personal</span>.
+              Ya sea que busques pines minimalistas o expresivos, nuestra
+              selección abarca una amplia gama de gustos y preferencias para que
+              encuentres el complemento perfecto.
+            </p>
+            <hr />
 
-  </div>
-  </div>
-  </main>
-  <footer class="text-capitalize text-center">
-    &copy; 2023 TusPinsTunja - Todos los Derechos Reservados 
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-   <script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-   crossorigin="anonymous"
- ></script>
-</body>
+            <p>
+              La <span class="highlight">calidad</span> es nuestro sello
+              distintivo. Cada pin metálico en nuestro catálogo cumple con los
+              más altos estándares de durabilidad y diseño. Nos enorgullece
+              brindar productos excepcionales que resisten la prueba del tiempo.
+            </p>
+            <hr />
 
+            <p>
+              Detrás de TusPinsTunja, encontrarás un equipo
+              <span class="highlight">apasionado</span> que busca constantemente
+              las últimas tendencias y los diseños más
+              <span class="highlight">innovadores</span>. Nuestro compromiso es
+              ofrecerte un abanico de opciones que se adapten a tu estilo de
+              vida y personalidad.
+            </p>
+            <hr />
 
+            <p>
+              Estamos <span class="highlight">entusiasmados</span> por compartir
+              nuestra pasión contigo. Únete a la comunidad de TusPinsTunja y
+              descubre cómo nuestros productos pueden
+              <span class="highlight"
+                >enriquecer tu estilo y expresión personal</span
+              >. Ya sea que desees realzar tu vestuario o coleccionar pines que
+              cuenten tu historia, en TusPinsTunja, encontrarás la exclusividad
+              y calidad que necesitas.
+            </p>
+            <hr />
+
+            <p>
+              Descubre la satisfacción de la
+              <span class="highlight">venta al por detal</span> y lleva un toque
+              especial a tu vida con los pines metálicos de TusPinsTunja.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-capitalize text-center">
+      &copy; 2023 TusPinsTunja - Todos los Derechos Reservados
+    </footer>
+
+    <!-- Script para activar el carrusel de imágenes -->
+    <script>
+      const myCarouselElement = document.querySelector("#myCarousel");
+
+      const carousel = new bootstrap.Carousel(myCarouselElement, {
+        interval: 1000,
+        touch: false,
+      });
+    </script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

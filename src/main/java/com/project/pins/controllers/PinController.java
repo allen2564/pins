@@ -35,5 +35,13 @@ public class PinController {
 
         return "faq";
     }
+    
+    @GetMapping(value = "/asnjkdjbx/asdhhjkb/jkasdb/formularioUpdate")
+    public String update(Model model) {
+
+        model.addAttribute("titulo","Sube tus productos");
+
+        return "form_update";
+    }
 
 }

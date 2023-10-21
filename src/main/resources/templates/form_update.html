@@ -4,13 +4,13 @@
   <title> TusPinsTunja / Catalogo </title>
   <link
       rel="shortcut icon"
-      href="img\logo.png"
+      th:href="@{/img/logo.png}"
       type="image/x-icon"
     />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="css\style.css" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
   <!-- Bootstrap CSS v5.2.1 -->
   <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -21,41 +21,33 @@
 </head>
 
 <body>
-  <div class="petalos position-fixed z-2 w-100 d-flex h-75" >
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-    <img src="img\2yqT.gif" alt="petalos" class="w-25 h-75">
-  </div>
   <header>
     <nav th:replace="layout/plantilla.html :: navigation"></nav>
-    <div class=" d-flex p-0 container-fluid text-center text-capitalize align-items-center justify-content-center"  style="background-image: url(../img/fondu.jpg); background-size: cover; background-position-y: center;  width: 100%; height: 200px;" >
+    <div class=" d-flex p-0 container-fluid text-center text-capitalize align-items-center justify-content-center"  th:style="'background-image: url(' + @{/img/fondu.jpg} + '); background-size: cover; background-position-y: center;  width: 100%; height: 200px;'" >
     
-      <h1 class="text-white fw-bolder w-100 overflow-hidden h-100 display-2 pt-5 text-wrap  m-auto" style="text-decoration: underline solid #A0835C; text-shadow: 3px 5px 3px rgb(0, 0, 0); backdrop-filter: blur(2px); background-color: rgba(0, 0, 0, 0.353); ">Nuestro Catalogo</h1>
+      <h1 class="text-white fw-bolder w-100 overflow-hidden h-100 display-2 pt-5 text-wrap  m-auto" style="text-decoration: underline solid #A0835C; text-shadow: 3px 5px 3px rgb(0, 0, 0); backdrop-filter: blur(2px); background-color: rgba(0, 0, 0, 0.353); ">[[${titulo}]]</h1>
     </div>
   </header>
   <main>
 <div class="container-fluid" >
   <div class="row justify-content-evenly align-items-center m-auto text-center border rounded-2 p-3" style="background-color: #1d282e;">
 
-    <div class="col-md-4 mb-3 col-form-label-sm">
-      <div class="card text-start border border-1 border-white" style="background-color: #737E80; box-shadow: 3px 3px 10px #A0835C;">
-        <img class="card-img-top z-3 position-absolute img"  alt="Title"  src="img\josgi.png" height="200px" style="object-fit: contain; margin-top: 50px;">
-        <img class="card-img-top z-0"  alt="Title"  src="img\mario.jpg" height="300px" style="object-fit: cover; opacity: .8;" >
-          <p class="w-75 position-absolute z-2 text-center fs-5 fw-bolder text-white text-opacity-75 rounded-4 text-wrap display-1" style="top: 65%; left: 15%; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); border: 2px solid rgba(245, 245, 245, 0.375);">@TusPinsTunja</p>
-      
-        <div class="card-body text-white-50 d-flex justify-content-between">
-          <div>
-
-            <h4 class="card-title fw-bolder">Yoshi</h4>
-            <p class="card-text">Precio: $8.000</p>
-          </div>
-          <div class="btn z-3">
-            <a name="WhatsApp" id="WhatsApp" class="btn text-white-50 fw-bold text-wrap display-4 btn-sm h-auto z-3" style="background-color: #128C7E!important;" href="https://api.whatsapp.com/send?phone=+3015754422&text=123" role="button"><span class="text-decoration-underline">Pídelo <br>AQUÍ & AHORA</span></a>
-          </div>
-          </div>
-    </div>
-  </div>
+    <form class="text-white">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
   </div>
