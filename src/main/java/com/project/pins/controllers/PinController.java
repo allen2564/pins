@@ -36,7 +36,7 @@ public class PinController {
         return "faq";
     }
     
-    @GetMapping(value = "/asnjkdjbx/asdhhjkb/jkasdb/formularioUpdate")
+    @GetMapping(value = "/asnjkdjbx/asdhhjkb/jksdsdb/formularioUpdate")
     public String update(Model model) {
 
         model.addAttribute("titulo","Sube tus productos");
