@@ -8,6 +8,11 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -27,6 +32,11 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.project.pins.entities.PinEntity;
 import com.project.pins.models.services.IPinService;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 @Controller
 public class PinController {
@@ -102,26 +112,18 @@ public class PinController {
 
     @RequestMapping(value = "/enviar-mensaje/{nombrePin}/{precioPin}", method = RequestMethod.GET)
     public ModelAndView enviarMensaje(@PathVariable(value = "nombrePin") String nombrePin,
-            @PathVariable(value = "precioPin") String precioPin) {
+            @PathVariable(value = "precioPin") String precioPin, @RequestParam String url) {
         String msj = "Hola TusPinsTunja, estoy interesad@ en comprar el pin de " + nombrePin
                 + " que tiene un precio de " + precioPin
-                + " pesos. Si esta disponible, lo deseo adquirir, muchas gracias.";
+                + " pesos. Si esta disponible, lo deseo adquirir, muchas gracias. Adjunto imagen , enlace : " + url;
         String whatsappUrl = "https://api.whatsapp.com/send?phone=+3015754422" + "&text=" + msj;
         return new ModelAndView(new RedirectView(whatsappUrl));
     }
 
     @RequestMapping(value = "/eliminarPin/{id}")
     public String eliminarById(@PathVariable(value = "id") Long id) throws IOException {
-        PinEntity pin = iPinService.findById(id);
-
-        String imagen = pin.getImgPin();
-        Path pathArchivo = Paths.get(directorioImagenes.getFile().getAbsolutePath() + "/" + imagen);
-        String fondo = pin.getFondoPin();
-        Path pathArchivoFondo = Paths.get(directorioImagenes.getFile().getAbsolutePath() + "/" + fondo);
-
+      
         if (id > 0) {
-            Files.deleteIfExists(pathArchivo);
-            Files.deleteIfExists(pathArchivoFondo);
             iPinService.deleteById(id);
         } else {
             return "redirect:/error500";
@@ -148,7 +150,7 @@ public class PinController {
     }
 
    
-    private String guardarImagen(MultipartFile imagen) {
+    private String guardarImagenArchivo(MultipartFile imagen) {
         try {
             String nombreImagen = UUID.randomUUID().toString() + "_"
                     + StringUtils.cleanPath(imagen.getOriginalFilename());
@@ -160,4 +162,48 @@ public class PinController {
             return null;
         }
     }
+
+
+    private String guardarImagen(MultipartFile imagen) {
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpPost httpPost = new HttpPost("https://api.imgbb.com/1/upload");
+    
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.addTextBody("key", "9cde2b63dc86c906bd9f66c4d82814b5", ContentType.TEXT_PLAIN);
+            builder.addBinaryBody("image", imagen.getInputStream(), ContentType.DEFAULT_BINARY, imagen.getOriginalFilename());
+    
+            HttpEntity multipart = builder.build();
+            httpPost.setEntity(multipart);
+    
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity responseEntity = response.getEntity();
+    
+            if (response.getStatusLine().getStatusCode() == 200) {
+                String responseString = EntityUtils.toString(responseEntity);
+    
+                // Analizar la respuesta JSON
+                JSONObject jsonResponse = new JSONObject(responseString);
+                boolean success = jsonResponse.getBoolean("success");
+    
+                if (success) {
+                    JSONObject data = jsonResponse.getJSONObject("data");
+                    String imageUrl = data.getString("url");
+    
+                    return imageUrl;
+                } else {
+                    // Si la carga falló, puedes manejar el error aquí
+                    String errorMessage = jsonResponse.optString("error", "Error desconocido");
+                    System.err.println("Error al cargar la imagen: " + errorMessage);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+        return null;
+    }
+    
+    
 }
+
