@@ -91,8 +91,7 @@ nav {
 }
 
 @media (min-width: 750px) {
-
-  .img-uno{
+  .img-uno {
     width: 50% !important;
   }
 
@@ -102,10 +101,21 @@ nav {
     box-shadow: 3px 3px 3px whitesmoke;
   }
 
+  form {
+    width: 50%!important;
+  }
+
+  .div{
+    width: 50% !important;
+  }
 }
 
-h2 button{
+h2 button {
   font-weight: bolder;
-  font-size: large!important;
+  font-size: large !important;
   text-decoration: underline;
+}
+
+.div{
+  width: 100%;
 }

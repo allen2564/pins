@@ -29,6 +29,11 @@ public class PinEntity implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "nombre_pin", unique = true)
     private String nombrePin;
+ 
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "precio_pin")
+    private String precioPin;
 
     @NotNull
     @Size(min = 1, max = 255)

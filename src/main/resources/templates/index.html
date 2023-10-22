@@ -38,20 +38,20 @@
 <div class="container-fluid" >
   <div class="row justify-content-evenly align-items-center m-auto text-center border rounded-2 p-3" style="background-color: #1d282e;">
 
-    <div class="col-md-4 mb-3 col-form-label-sm">
+    <div class="col-md-4 mb-3 col-form-label-sm" th:each="pin: ${pines}"  th:if="${pin.estadoPin}">
       <div class="card text-start border border-1 border-white" style="background-color: #737E80; box-shadow: 3px 3px 10px #A0835C;">
-        <img class="card-img-top z-3 position-absolute img"  alt="Title"  src="img\josgi.png" height="200px" style="object-fit: contain; margin-top: 50px;">
-        <img class="card-img-top z-0"  alt="Title"  src="img\mario.jpg" height="300px" style="object-fit: cover; opacity: .8;" >
+        <img class="card-img-top z-3 position-absolute img"  alt="Title"   th:src="@{${'/img/pins/' + pin.imgPin}}" height="160px" style="object-fit: contain; margin-top: 50px;">
+        <img class="card-img-top z-0"  alt="Title"  th:src="@{${'/img/pins/' + pin.fondoPin}}"  height="300px" style="object-fit: cover; opacity: .8;" >
           <p class="w-75 position-absolute z-2 text-center fs-5 fw-bolder text-white text-opacity-75 rounded-4 text-wrap display-1" style="top: 65%; left: 15%; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); border: 2px solid rgba(245, 245, 245, 0.375);">@TusPinsTunja</p>
       
         <div class="card-body text-white-50 d-flex justify-content-between">
           <div>
 
-            <h4 class="card-title fw-bolder">Yoshi</h4>
-            <p class="card-text">Precio: $8.000</p>
+            <h4 class="card-title fw-bolder">[[${pin.nombrePin}]]</h4>
+            <p class="card-text">Precio: [[${pin.precioPin}]]</p>
           </div>
           <div class="btn z-3">
-            <a name="WhatsApp" id="WhatsApp" class="btn text-white-50 fw-bold text-wrap display-4 btn-sm h-auto z-3" style="background-color: #128C7E!important;" href="https://api.whatsapp.com/send?phone=+3015754422&text=123" role="button"><span class="text-decoration-underline">Pídelo <br>AQUÍ & AHORA</span></a>
+            <a name="WhatsApp" id="WhatsApp" class="btn text-white-50 fw-bold text-wrap display-4 btn-sm h-auto z-3" style="background-color: #128C7E!important;" th:href="@{/enviar-mensaje/} + ${pin.nombrePin} + '/' + ${pin.precioPin}" role="button" target="_blank"><span class="text-decoration-underline">Pídelo <br>AQUÍ & AHORA</span></a>
           </div>
           </div>
     </div>
