@@ -147,6 +147,7 @@ public class PinController {
         return "redirect:/pwe2jbhj5/pinsManager/admin/managerFiles";
     }
 
+   
     private String guardarImagen(MultipartFile imagen) {
         try {
             String nombreImagen = UUID.randomUUID().toString() + "_"
