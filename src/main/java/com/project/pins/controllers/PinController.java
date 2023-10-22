@@ -47,7 +47,7 @@ public class PinController {
     @Autowired
     private IPinService iPinService;
 
-    @GetMapping(value = "/index")
+    @GetMapping(value = "/")
     public String listar(Model model) {
 
         model.addAttribute("titulo", "Nuestro Catalogo");
