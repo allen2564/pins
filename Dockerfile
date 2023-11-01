@@ -1,15 +1,10 @@
-# Seleccionar una imagen base con Java 17 y Spring Boot
-FROM rsunix/yourkit-openjdk17
-
-
-# Definir el directorio de trabajo
+FROM adoptopenjdk:17-jdk-hotspot AS build
 WORKDIR /app
+COPY . .
+RUN ./mvnw clean package -DskipTests
 
-# Copiar el archivo JAR de la aplicación al contenedor
-COPY target/pins-0.0.1-SNAPSHOT.jar /app
-
-# Exponer el puerto en el que la aplicación escucha
+FROM adoptopenjdk:17-jre-hotspot
+WORKDIR /app
+COPY --from=build /app/target/pins-0.0.1-SNAPSHOT.jar .
 EXPOSE 8080
-
-# Comando de inicio para ejecutar la aplicación
 CMD ["java", "-jar", "pins-0.0.1-SNAPSHOT.jar"]
