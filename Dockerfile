@@ -6,4 +6,5 @@ RUN mvn clean package
 
 FROM openjdk:17
 COPY --from=maven-builder /app/target/pins-0.0.1-SNAPSHOT.jar /app/pins-0.0.1-SNAPSHOT.jar
-CMD ["java", "-jar", "/app/pins-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Xms512m", "-Xmx512m", "-jar","/app/pins-0.0.1-SNAPSHOT.jar"]
+
