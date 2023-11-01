@@ -2,7 +2,7 @@
 FROM maven:3.8.4-openjdk-17 AS build
 
 # Establece un directorio de trabajo
-WORKDIR /pin
+WORKDIR /pins
 
 # Copia el archivo POM y los archivos de configuración de Maven
 COPY pom.xml .
@@ -14,13 +14,13 @@ COPY src src
 RUN mvn clean package -DskipTests
 
 # Etapa de producción: Utiliza una imagen base de OpenJDK 11 para ejecutar la aplicación
-FROM openjdk:17-alpine
+FROM khipu/openjdk17-alpine:latest
 
 # Establece el directorio de trabajo
 WORKDIR /pins
 
 # Copia el archivo JAR construido desde la etapa de construcción
-COPY --from=build /pin/target/pins-0.0.1-SNAPSHOT.jar pins.jar
+COPY --from=build /pins/target/pins-0.0.1-SNAPSHOT.jar pins.jar
 
 # Expone el puerto que utilizará la aplicación
 EXPOSE 8080
