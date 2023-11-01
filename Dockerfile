@@ -1,5 +1,6 @@
 # Seleccionar una imagen base con Java 17 y Spring Boot
-FROM adoptopenjdk:17-jdk-hotspot
+FROM rsunix/yourkit-openjdk17
+
 
 # Definir el directorio de trabajo
 WORKDIR /app
