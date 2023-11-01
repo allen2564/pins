@@ -1,32 +1,28 @@
-# Etapa de construcción: Utiliza una imagen base con JDK 11 y Maven para compilar el proyecto
-FROM maven:3.8.4-openjdk-17 AS build
+# Seleccionar una imagen base con Java 17 y Maven
+FROM adoptopenjdk:17-jdk-hotspot AS build
 
-# Establece un directorio de trabajo
-WORKDIR /pins
+# Definir el directorio de trabajo
+WORKDIR /app
 
-# Copia el archivo POM y los archivos de configuración de Maven
+# Copiar el archivo pom.xml y descargar las dependencias
 COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Copia el resto de los archivos del proyecto
-COPY src src
+# Copiar el código fuente y compilar la aplicación
+COPY src ./src
+RUN mvn package -DskipTests
 
-# Compila y empaqueta el proyecto
-RUN mvn clean package -DskipTests
+# Crear una imagen final con la aplicación compilada
+FROM adoptopenjdk:17-jre-hotspot
 
-# Etapa de producción: Utiliza una imagen base de OpenJDK 11 para ejecutar la aplicación
-FROM rsunix/yourkit-openjdk17
+# Definir el directorio de trabajo
+WORKDIR /app
 
-# Establece el directorio de trabajo
-WORKDIR /pins
+# Copiar el archivo JAR de la aplicación desde la etapa de compilación
+COPY --from=build /app/target/pins-0.0.1-SNAPSHOT.jar .
 
-# Copia el archivo JAR construido desde la etapa de construcción
-COPY --from=build /pins/target/pins-0.0.1-SNAPSHOT.jar pins.jar
-
-# Expone el puerto que utilizará la aplicación
+# Exponer el puerto en el que la aplicación escucha
 EXPOSE 8080
 
-# Establece las opciones de JVM para la aplicación (ajusta según sea necesario)
-ENV JAVA_OPTS=""
-
-# Comando para ejecutar la aplicación Spring Boot
-CMD ["java", "-jar", "pins.jar"]
+# Comando de inicio para ejecutar la aplicación
+CMD ["java", "-jar", "pins-0.0.1-SNAPSHOT.jar"]
