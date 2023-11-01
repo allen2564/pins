@@ -1,10 +1,9 @@
-FROM adoptopenjdk:17-jdk-hotspot AS build
+FROM maven:3.8.4-openjdk-17 as maven-builder
+COPY src /app/src
+COPY pom.xml /app/pom.xml
 WORKDIR /app
-COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package
 
-FROM adoptopenjdk:17-jre-hotspot
-WORKDIR /app
-COPY --from=build /app/target/pins-0.0.1-SNAPSHOT.jar .
-EXPOSE 8080
-CMD ["java", "-jar", "pins-0.0.1-SNAPSHOT.jar"]
+FROM openjdk:17
+COPY --from=maven-builder /app/target/pins-0.0.1-SNAPSHOT.jar /app/pins-0.0.1-SNAPSHOT.jar
+CMD ["java", "-jar", "/app/pins-0.0.1-SNAPSHOT.jar"]
