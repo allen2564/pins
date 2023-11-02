@@ -1,5 +1,5 @@
 # Usamos una imagen base con Maven y Java 17
-FROM maven:3.8.4-openjdk-17 as base
+FROM adoptopenjdk:17-jre-hotspot as base
 
 # Definimos variables de entorno para configurar la aplicación
 ENV APP_HOME=/app
@@ -10,7 +10,7 @@ WORKDIR $APP_HOME
 
 # Copiamos el archivo pom.xml y las dependencias
 COPY ./app/pom.xml ./pom.xml
-COPY ./app ./
+COPY ./app/src ./src
 
 # Empaquetar la aplicación Spring Boot
 RUN mvn -B -DskipTests clean package
