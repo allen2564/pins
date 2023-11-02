@@ -13,7 +13,7 @@ public class PinsApplication {
 		String port = System.getenv("PORT");
 		String host = System.getenv("HOST");
 		app.setDefaultProperties(Collections.singletonMap("server.port", port == null ? "8080" : port));
-		app.setDefaultProperties(Collections.singletonMap("server.address", host == null ? "10.0.116.183" : host));
+		app.setDefaultProperties(Collections.singletonMap("server.address", host == null ? "0.0.0.0" : host));
 		app.run(args);
 	}
 
