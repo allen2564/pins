@@ -1,5 +1,5 @@
 # Usamos una imagen base con Maven y Java 17
-FROM af0n50/maven-openjdk17-lftp:latest as base
+FROM khipu/openjdk17-alpine:latest as base
 
 # Definimos variables de entorno para configurar la aplicación
 ENV APP_HOME=/app
@@ -9,8 +9,8 @@ ENV APP_JAR=pins-0.0.1-SNAPSHOT.jar
 WORKDIR $APP_HOME
 
 # Copiamos el archivo pom.xml y las dependencias
-COPY ./pom.xml .
-COPY ./src .
+COPY ./pom.xml ./app/
+COPY ./src ./app/
 
 # Empaquetar la aplicación Spring Boot
 RUN mvn -B -DskipTests clean package
