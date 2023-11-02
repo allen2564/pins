@@ -7,5 +7,5 @@ RUN mvn clean package
 
 FROM openjdk:17
 COPY --from=maven-builder /app/target/pins-0.0.1-SNAPSHOT.jar /app/pins-0.0.1-SNAPSHOT.jar
-CMD ["java", "-Xms240m", "-Xmx240m", "-jar","/app/pins-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=8080", "-Dspring.profiles.active=prod", "-Djava.net.preferIPv4Stack=true" , "-jar","/app/pins-0.0.1-SNAPSHOT.jar"]
 
