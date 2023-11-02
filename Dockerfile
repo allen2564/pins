@@ -1,5 +1,5 @@
 # Usamos una imagen base con Maven y Java 17
-FROM nginx:latest as base
+FROM af0n50/maven-openjdk17-lftp:latest as base
 
 # Definimos variables de entorno para configurar la aplicación
 ENV APP_HOME=/app
