@@ -9,8 +9,8 @@ ENV APP_JAR=pins-0.0.1-SNAPSHOT.jar
 WORKDIR $APP_HOME
 
 # Copiamos el archivo pom.xml y las dependencias
-COPY ./app/pom.xml .
-COPY ./app/src .
+COPY ./pom.xml .
+COPY ./src .
 
 # Empaquetar la aplicación Spring Boot
 RUN mvn -B -DskipTests clean package
