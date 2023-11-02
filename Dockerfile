@@ -1,5 +1,5 @@
 # Usamos una imagen base con Maven y Java 17
-FROM adoptopenjdk:17-jre-hotspot as base
+FROM apache/beam_java17_sdk:latest as base
 
 # Definimos variables de entorno para configurar la aplicación
 ENV APP_HOME=/app
