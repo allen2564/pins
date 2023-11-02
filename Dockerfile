@@ -10,7 +10,7 @@ WORKDIR $APP_HOME
 
 # Copiamos el archivo pom.xml y las dependencias
 COPY ./app/pom.xml ./pom.xml
-COPY ./app/src ./src
+COPY ./app ./
 
 # Empaquetar la aplicación Spring Boot
 RUN mvn -B -DskipTests clean package
