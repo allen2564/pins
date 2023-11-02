@@ -1,4 +1,4 @@
-FROM khipu/openjdk17-alpine:latest as maven-builder
+FROM maven:3.8.4-openjdk-17 as maven-builder
 COPY src /app/src
 COPY pom.xml /app/pom.xml
 EXPOSE 8080
