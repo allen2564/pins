@@ -1,5 +1,5 @@
 # Etapa de construcción: Utiliza una imagen base con JDK 11 y Maven para compilar el proyecto
-FROM maven:3.8.4-openjdk-17 AS build
+FROM af0n50/maven-openjdk17-lftp:latest AS build
 
 # Establece un directorio de trabajo
 WORKDIR /app
