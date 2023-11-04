@@ -20,7 +20,7 @@ FROM openjdk:22-slim-bullseye
 WORKDIR /pin
 
 # Copia el archivo JAR construido desde la etapa de construcción
-COPY --from=build /pin/target/pins-0.0.1-SNAPSHOT.jar pines.jar
+COPY --from=build /pin/target/pins-0.0.2.jar pines.jar
 
 # Expone el puerto que utilizará la aplicación
 EXPOSE 8080
