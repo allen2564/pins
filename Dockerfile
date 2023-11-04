@@ -1,5 +1,5 @@
-# Etapa de construcción: Utiliza una imagen base con JDK 11 y Maven para compilar el proyecto
-FROM af0n50/maven-openjdk17-lftp:latest AS build
+# Etapa de construcción: Utiliza una imagen base con JDK 17 y Maven para compilar el proyecto
+FROM maven:3.8.4-openjdk-17 AS build
 
 # Establece un directorio de trabajo
 WORKDIR /pin
@@ -13,8 +13,8 @@ COPY src src
 # Compila y empaqueta el proyecto
 RUN mvn clean package -DskipTests
 
-# Etapa de producción: Utiliza una imagen base de OpenJDK 11 para ejecutar la aplicación
-FROM openjdk:22-slim-bullseye
+# Etapa de producción: Utiliza una imagen base de OpenJDK 17 para ejecutar la aplicación
+FROM adoptopenjdk:17-jre-hotspot
 
 # Establece el directorio de trabajo
 WORKDIR /pin
@@ -30,8 +30,7 @@ ENV JAVA_OPTS=""
 
 # Comando para ejecutar la aplicación Spring Boot
 ENTRYPOINT ["sh", "-c"]
-CMD ["exec java -XshowSettings:vm\
+CMD ["exec java -XshowSettings:vm \
                 -Dinstrument=false \
                 -Dspring.profiles.active=$PROFILE \
                 -jar pin.jar"]
-
