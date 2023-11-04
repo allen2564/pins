@@ -11,9 +11,7 @@ public class PinsApplication {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(PinsApplication.class);
 		String port = System.getenv("PORT");
-		String host = System.getenv("HOST");
 		app.setDefaultProperties(Collections.singletonMap("server.port", port == null ? "8080" : port));
-		app.setDefaultProperties(Collections.singletonMap("server.address", host == null ? "0.0.0.0" : host));
 		app.run(args);
 	}
 
