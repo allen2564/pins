@@ -20,7 +20,7 @@ RUN mvn clean package -DskipTests
 WORKDIR /pin
 
 # Copia el archivo JAR construido desde la etapa de construcción
-COPY --from=build /pin/target/pins-0.0.1-SNAPSHOT.jar pin.jar
+COPY --from=build /pin/target/pins-0.0.1-SNAPSHOT.jar pines.jar
 
 # Expone el puerto que utilizará la aplicación
 EXPOSE 8080
@@ -33,4 +33,4 @@ ENTRYPOINT ["sh", "-c"]
 CMD ["exec java -XshowSettings:vm \
                 -Dinstrument=false \
                 -Dspring.profiles.active=$PROFILE \
-                -jar pin.jar"]
+                -jar pines.jar"]
