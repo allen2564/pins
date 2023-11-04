@@ -14,7 +14,7 @@ COPY src src
 RUN mvn clean package -DskipTests
 
 # Etapa de producción: Utiliza una imagen base de OpenJDK 17 para ejecutar la aplicación
-FROM adoptopenjdk:17-jre-hotspot
+FROM openjdk:22-slim-bullseye
 
 # Establece el directorio de trabajo
 WORKDIR /pin
