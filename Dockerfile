@@ -1,6 +1,14 @@
 # Etapa de construcción: Utiliza una imagen base con JDK 17 y Maven para compilar el proyecto
 FROM maven:3.8.4-openjdk-17 AS build
 
+# Argumento para decidir si eliminar imágenes antiguas
+ARG DELETE_OLD_IMAGES=true
+
+# Elimina las imágenes antiguas si DELETE_OLD_IMAGES=true
+RUN if [ "$DELETE_OLD_IMAGES" = "true" ]; then \
+    docker rmi $(docker images -q) || true; \
+fi
+
 # Establece un directorio de trabajo
 WORKDIR /pin
 
