@@ -1,5 +1,5 @@
 # Etapa de construcción: Utiliza una imagen base con JDK 17 y Maven para compilar el proyecto
-FROM maven:3.8.4-openjdk-17 AS build
+#FROM maven:3.8.4-openjdk-17 AS build
 
 # Establece un directorio de trabajo
 WORKDIR /pin
@@ -14,7 +14,7 @@ COPY src src
 RUN mvn clean package -DskipTests
 
 # Etapa de producción: Utiliza una imagen base de OpenJDK 17 para ejecutar la aplicación
-FROM openjdk:22-slim-bullseye
+#FROM openjdk:22-slim-bullseye
 
 # Establece el directorio de trabajo
 WORKDIR /pin
