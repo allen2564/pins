@@ -14,7 +14,7 @@ COPY src src
 RUN mvn clean package -DskipTests
 
 # Etapa de producción: Utiliza una imagen base de OpenJDK 11 para ejecutar la aplicación
-FROM khipu/openjdk17-alpine:latest
+FROM openjdk17-alpine:latest
 
 # Establece el directorio de trabajo
 WORKDIR /app
