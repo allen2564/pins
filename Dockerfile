@@ -1,4 +1,4 @@
-FROM  openjdk:22-slim-bullseye
+FROM openjdk:11-jre-slim
 
 WORKDIR /opt/
 ADD  app.jar /opt/app.jar
