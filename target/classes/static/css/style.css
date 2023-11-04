@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Fredericka+the+Great&family=Handlee&display=swap");
+
+body {
+  font-family: "Handlee", cursive !important;
+  font-style: italic !important;
+  background-color: #eef6f9 !important;
+  background-image: url("https://i.ibb.co/JWZPsZR/fondo.webp");
+  background-size: cover;
+  background-position: 180%;
+}
+main {
+  padding: 20px;
+}
+nav {
+  font-weight: bolder !important;
+  background-color: #1d282e !important;
+  text-align: center;
+  background-image: url("../img/fff.png");
+  background-size: cover;
+}
+
+.logo {
+  animation: girar 200s alternate infinite;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.img {
+  overflow: hidden; /* Oculta las partes de la imagen que exceden el tamaño del contenedor */
+  animation: girarar 10s linear infinite;
+  transform-style: preserve-3d;
+  perspective: 10px;
+  filter: drop-shadow(3px 3px 5px #eef6f9);
+}
+
+.img:hover {
+  animation-play-state: paused;
+  animation: agrandar 0.8s linear forwards;
+}
+
+@keyframes girarar {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes agrandar {
+  0% {
+    height: 200px;
+  }
+  100% {
+    height: 250px;
+    margin-top: 10px;
+  }
+}
+
+/* Estilo del contenido principal */
+.main-content {
+  padding: 30px;
+  text-align: center;
+}
+
+/* Estilo para los párrafos */
+.main-content p {
+  font-size: 1.4rem;
+  color: #f0f0f0; /* Color de texto más oscuro */
+  margin-bottom: 20px;
+}
+
+/* Estilo para resaltar el texto */
+.highlight {
+  color: #007bff; /* Color de resaltado */
+  font-weight: bold;
+}
+
+/* Estilo del carrusel de imágenes */
+.carousel-inner img {
+  height: 100%;
+  width: 100% !important;
+  box-shadow: 3px 3px 3px whitesmoke;
+}
+
+@media (min-width: 750px) {
+  .img-uno {
+    width: 50% !important;
+  }
+
+  .carousel-inner img {
+    height: 50%;
+    width: 25% !important;
+    box-shadow: 3px 3px 3px whitesmoke;
+  }
+
+  form {
+    width: 50%!important;
+  }
+
+  .div{
+    width: 50% !important;
+  }
+}
+
+h2 button {
+  font-weight: bolder;
+  font-size: large !important;
+  text-decoration: underline;
+}
+
+.div{
+  width: 100%;
+}
