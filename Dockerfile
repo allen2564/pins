@@ -15,11 +15,12 @@ WORKDIR /pin
 # Copia el archivo POM y los archivos de configuración de Maven
 COPY pom.xml .
 
+# Crea el directorio src y copia solo el archivo application.properties
+RUN mkdir -p src/main/resources
+COPY src/main/resources/application.properties src/main/resources/
+
 # Copia el resto de los archivos del proyecto
 COPY src src
-
-# Copia el archivo application.properties
-COPY application.properties src/main/resources/application.properties
 
 # Compila y empaqueta el proyecto
 RUN mvn clean package -DskipTests
