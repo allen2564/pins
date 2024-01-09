@@ -18,11 +18,14 @@ COPY pom.xml .
 # Copia el resto de los archivos del proyecto
 COPY src src
 
+# Copia el archivo application.properties
+COPY application.properties src/main/resources/application.properties
+
 # Compila y empaqueta el proyecto
 RUN mvn clean package -DskipTests
 
 # Etapa de producción: Utiliza una imagen base de OpenJDK 17 para ejecutar la aplicación
-FROM openjdk:22-slim-bullseye
+FROM openjdk:17-slim-bullseye
 
 # Establece el directorio de trabajo
 WORKDIR /pin
@@ -38,7 +41,7 @@ ENV JAVA_OPTS=""
 
 # Comando para ejecutar la aplicación Spring Boot
 ENTRYPOINT ["sh", "-c"]
-CMD ["exec java -XshowSettings:vm \
+CMD ["exec java $JAVA_OPTS -XshowSettings:vm \
                 -Dinstrument=false \
                 -Dspring.profiles.active=$PROFILE \
                 -jar pines.jar"]
